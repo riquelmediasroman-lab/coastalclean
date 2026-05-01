@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CoastalClean - Sullana & Océanos</title>
-    <!-- Fuente moderna: Poppins -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>CoastalClean - Impacto Ambiental</title>
+    <!-- Fuente profesional Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -20,13 +20,13 @@
                 <li><a href="#">Voluntarios</a></li>
                 <li><a href="#">Nosotros</a></li>
             </ul>
-            <a href="#registro" class="btn-cta">Únete Ahora</a>
+            <a href="#" class="btn-cta">Únete Ahora</a>
         </nav>
     </header>
 
     <div class="marquee-container">
         <div class="marquee-text" id="marquee">
-            • SALVEMOS EL OCÉANO JUNTOS • ¡BIENVENIDO A COASTALCLEAN! • PRÓXIMA LIMPIEZA: MAYO 2026 • ÚNETE A NUESTROS VOLUNTARIOS • 
+            • SALVEMOS EL OCÉANO JUNTOS • PRÓXIMA LIMPIEZA: MAYO 2026 • ÚNETE A NUESTROS VOLUNTARIOS EN MÉXICO • 
         </div>
     </div>
 
@@ -51,10 +51,9 @@
             </div>
         </section>
 
-        <section id="problema" class="problem-section">
+        <section class="problem-section">
             <span class="section-tag">EL PROBLEMA</span>
             <h2>¿Por qué es urgente actuar?</h2>
-            
             <div class="grid-container">
                 <article class="card">
                     <h3>Microplásticos</h3>
@@ -66,97 +65,51 @@
                 </article>
                 <article class="card">
                     <h3>Economía Circular</h3>
-                    <p>Solo el 9% del plástico producido se recicla.</p>
+                    <p>Solo el 9% del plástico producido se recicla internacionalmente.</p>
                 </article>
-                <article class="card">
-                    <h3>Producción Global</h3>
-                    <p>Se producen 400 millones de toneladas al año.</p>
-                </article>
-            </div>
-        </section>
-
-        <section class="cta-final">
-            <div class="cta-content">
-                <h2>El océano nos necesita. ¿Te sumas?</h2>
-                <p>Regístrate como voluntario y únete a la próxima brigada de limpieza.</p>
-                <a href="#" class="btn-dark">Registro de Voluntarios →</a>
             </div>
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2026 CoastalClean. Proyecto académico por Pedro Ricardo Peña Talledo.</p>
-    </footer>
-
-    <script src="script.js"></script>
-    <!-- Modal de Registro -->
-<div id="modalRegistro" class="modal">
-    <div class="modal-content">
-        <span class="close-btn">&times;</span>
-        <h2>Registro de Voluntarios</h2>
-        <p>Únete a nuestra brigada en México</p>
-        
-        <form id="formRegistro">
-            <div class="input-group">
-                <label>Nombre Completo</label>
-                <input type="text" id="nombre" placeholder="Ej. Juan Pérez" required>
-            </div>
-
-            <div class="input-group">
-                <label>Correo Electrónico</label>
-                <input type="email" id="email" placeholder="correo@ejemplo.com" required>
-            </div>
-
-            <div class="input-group">
-                <label>Teléfono (México)</label>
-                <div class="phone-input">
-                    <span class="prefix">+52</span>
-                    <input type="tel" id="telefono" placeholder="55 1234 5678" pattern="[0-9]{10}" title="Por favor ingresa los 10 dígitos de tu número" required>
+    <!-- Ventana Emergente (Modal) de Registro -->
+    <div id="modalRegistro" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Registro de Voluntarios</h2>
+            <p>Completa tus datos para unirte a la brigada en México.</p>
+            
+            <form id="formRegistro">
+                <div class="input-group">
+                    <label>Nombre Completo</label>
+                    <input type="text" id="nombre" placeholder="Tu nombre" required>
                 </div>
-            </div>
-
-            <div class="input-group">
-                <label>Estado de México</label>
-                <select id="estado" required>
-                    <option value="" disabled selected>Selecciona tu estado</option>
-                    <option value="Aguascalientes">Aguascalientes</option>
-                    <option value="Baja California">Baja California</option>
-                    <option value="Baja California Sur">Baja California Sur</option>
-                    <option value="Campeche">Campeche</option>
-                    <option value="Chiapas">Chiapas</option>
-                    <option value="Chihuahua">Chihuahua</option>
-                    <option value="Ciudad de México">Ciudad de México</option>
-                    <option value="Coahuila">Coahuila</option>
-                    <option value="Colima">Colima</option>
-                    <option value="Durango">Durango</option>
-                    <option value="Estado de México">Estado de México</option>
-                    <option value="Guanajuato">Guanajuato</option>
-                    <option value="Guerrero">Guerrero</option>
-                    <option value="Hidalgo">Hidalgo</option>
-                    <option value="Jalisco">Jalisco</option>
-                    <option value="Michoacán">Michoacán</option>
-                    <option value="Morelos">Morelos</option>
-                    <option value="Nayarit">Nayarit</option>
-                    <option value="Nuevo León">Nuevo León</option>
-                    <option value="Oaxaca">Oaxaca</option>
-                    <option value="Puebla">Puebla</option>
-                    <option value="Querétaro">Querétaro</option>
-                    <option value="Quintana Roo">Quintana Roo</option>
-                    <option value="San Luis Potosí">San Luis Potosí</option>
-                    <option value="Sinaloa">Sinaloa</option>
-                    <option value="Sonora">Sonora</option>
-                    <option value="Tabasco">Tabasco</option>
-                    <option value="Tamaulipas">Tamaulipas</option>
-                    <option value="Tlaxcala">Tlaxcala</option>
-                    <option value="Veracruz">Veracruz</option>
-                    <option value="Yucatán">Yucatán</option>
-                    <option value="Zacatecas">Zacatecas</option>
-                </select>
-            </div>
-
-            <button type="submit" class="btn-submit">Enviar Registro</button>
-        </form>
-    </div>
-</div>
-</body>
-</html>
+                <div class="input-group">
+                    <label>Correo Electrónico</label>
+                    <input type="email" id="email" placeholder="correo@ejemplo.com" required>
+                </div>
+                <div class="input-group">
+                    <label>Teléfono (México)</label>
+                    <div class="phone-input">
+                        <span class="prefix">+52</span>
+                        <input type="tel" id="telefono" placeholder="10 dígitos" pattern="[0-9]{10}" required>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label>Estado de México</label>
+                    <select id="estado" required>
+                        <option value="" disabled selected>Selecciona tu estado</option>
+                        <option value="Aguascalientes">Aguascalientes</option>
+                        <option value="Baja California">Baja California</option>
+                        <option value="Baja California Sur">Baja California Sur</option>
+                        <option value="Campeche">Campeche</option>
+                        <option value="Chiapas">Chiapas</option>
+                        <option value="Chihuahua">Chihuahua</option>
+                        <option value="Ciudad de México">Ciudad de México</option>
+                        <option value="Coahuila">Coahuila</option>
+                        <option value="Colima">Colima</option>
+                        <option value="Durango">Durango</option>
+                        <option value="Guanajuato">Guanajuato</option>
+                        <option value="Guerrero">Guerrero</option>
+                        <option value="Hidalgo">Hidalgo</option>
+                        <option value="Jalisco">Jalisco</option>
+                        Normally I can help with things like this, but I don't seem to have access to that content. You can try again or ask me for something else.
