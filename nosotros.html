@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Nosotros - CoastalClean</title>
+    <style>
+        :root { --bg: #050f1a; --sec: #0b1e36; --accent: #00d4ff; --text: #ffffff; }
+        body { background: var(--bg); color: var(--text); font-family: sans-serif; margin: 0; }
+        .container { padding: 60px 5%; max-width: 800px; margin: 0 auto; }
+        .glass-card { background: var(--sec); padding: 40px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); }
+        .team-list { list-style: none; padding: 0; margin: 20px 0; border-top: 1px solid rgba(255,255,255,0.1); }
+        .team-list li { padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.1); color: #cbd5e1; }
+        .obj-box { background: rgba(0,212,255,0.1); padding: 20px; border-left: 4px solid var(--accent); border-radius: 4px; margin-top: 30px; }
+        header { background: var(--sec); padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; }
+        .logo span { color: var(--accent); font-weight: bold; }
+        .nav-links { display: flex; list-style: none; gap: 20px; }
+        .nav-links a { color: #94a3b8; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Coastal<span>Clean</span></div>
+        <nav><ul class="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="nosotros.html" style="color:var(--accent)">Nosotros</a></li>
+        </ul></nav>
+    </header>
+    <main class="container">
+        <div class="glass-card">
+            <h2>¿Quiénes somos?</h2>
+            <p>Estudiantes comprometidos con la conservación marina y el <strong>ODS 14</strong>.</p>
+            <h3>Nuestro Equipo</h3>
+            <ul class="team-list">
+                <li>Daniel Andres Luna Perez</li>
+                <li>Joan Sebastian Castro Sarao</li>
+                <li>Juan Manuel Cavalli Piffaretti</li>
+                <li>Sara Ines Cordero Rodriguez</li>
+            </ul>
+            <div class="obj-box">
+                <strong>Nuestro Objetivo:</strong> Proteger la salud de nuestros océanos para las próximas generaciones.
+            </div>
+        </div>
+    </main>
+</body>
+</html>
