@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>CoastalClean - Hazte Voluntario</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header><nav><div class="logo">Coastal<span>Clean</span></div></nav></header>
+
+    <main class="form-container">
+        <div class="glass-form">
+            <h2>Hazte Voluntario</h2>
+            <p>Completa el formulario para unirte a una brigada de limpieza</p>
+            
+            <form id="formRegistro">
+                <div class="form-row">
+                    <div class="input-group"><label>Nombre Completo *</label><input type="text" placeholder="Tu nombre" required></div>
+                    <div class="input-group"><label>Email *</label><input type="email" placeholder="@email.com" required></div>
+                </div>
+                <div class="form-row">
+                    <div class="input-group">
+                        <label>Teléfono</label>
+                        <div class="phone-input"><span class="prefix">+52</span><input type="tel" placeholder="55 0000 0000" required></div>
+                    </div>
+                    <div class="input-group">
+                        <label>Ciudad *</label>
+                        <select required>
+                            <option value="">Tu ciudad (Estado)</option>
+                            <option value="CDMX">Ciudad de México</option>
+                            <option value="Jalisco">Jalisco</option>
+                            <option value="Yucatan">Yucatán</option>
+                            <!-- Agregar más -->
+                        </select>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label>¿Por qué quieres participar?</label>
+                    <textarea placeholder="Cuéntanos tu motivación..."></textarea>
+                </div>
+                <button type="submit" class="btn-submit-large">Registrarme</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
