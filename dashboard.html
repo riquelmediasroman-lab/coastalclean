@@ -2,59 +2,48 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>CoastalClean - Panel de Progreso</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Dashboard - CoastalClean</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Reutilizamos el estilo base */
+        :root { --bg: #050f1a; --sec: #0b1e36; --accent: #00d4ff; --text: #ffffff; }
+        body { background: var(--bg); color: var(--text); font-family: sans-serif; margin: 0; }
+        header { background: var(--sec); padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; }
+        .logo span { color: var(--accent); font-weight: bold; }
+        .container { padding: 40px 5%; max-width: 1200px; margin: 0 auto; }
+        .charts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 40px; }
+        .chart-box { background: rgba(255,255,255,0.03); padding: 20px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); }
+        .nav-links { display: flex; list-style: none; gap: 20px; }
+        .nav-links a { color: #94a3b8; text-decoration: none; }
+    </style>
 </head>
 <body>
     <header>
-        <nav>
-            <div class="logo">Coastal<span>Clean</span></div>
-            <ul class="nav-links">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="dashboard.html" class="active">Dashboard</a></li>
-                <li><a href="articulos.html">Artículos</a></li>
-                <li><a href="registro.html">Voluntarios</a></li>
-                <li><a href="nosotros.html">Nosotros</a></li>
-            </ul>
-        </nav>
+        <div class="logo">Coastal<span>Clean</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="dashboard.html" style="color:var(--accent)">Dashboard</a></li>
+            <li><a href="articulos.html">Artículos</a></li>
+            <li><a href="registro.html">Voluntarios</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
+        </ul>
     </header>
-
     <main class="container">
-        <h2 class="page-title">Panel de Progreso</h2>
-        
-        <div class="stats-grid-small">
-            <div class="stat-mini"><span>Total Recolectado</span><strong>0 kg</strong></div>
-            <div class="stat-mini"><span>Voluntarios</span><strong>4</strong></div>
-            <div class="stat-mini"><span>Limpiezas</span><strong>0</strong></div>
-            <div class="stat-mini"><span>Área Limpiada</span><strong>0 m²</strong></div>
-        </div>
-
-        <div class="charts-container">
+        <h2>Panel de Progreso</h2>
+        <div class="charts-grid">
             <div class="chart-box"><canvas id="barChart"></canvas></div>
             <div class="chart-box"><canvas id="pieChart"></canvas></div>
         </div>
     </main>
-
     <script>
-        // Configuración de Gráficas
-        const ctxBar = document.getElementById('barChart').getContext('2d');
-        new Chart(ctxBar, {
+        new Chart(document.getElementById('barChart'), {
             type: 'bar',
-            data: {
-                labels: ['Playa', 'Costa', 'Bahía', 'Costas'],
-                datasets: [{ label: 'Residuos', data: [250, 400, 340, 200], backgroundColor: '#00d4ff' }]
-            },
-            options: { plugins: { legend: { labels: { color: '#fff' } } } }
+            data: { labels: ['Playa', 'Costa', 'Bahía'], datasets: [{ label: 'Kg', data: [250, 400, 300], backgroundColor: '#00d4ff' }]},
+            options: { plugins: { legend: { labels: { color: '#fff' }}}}
         });
-
-        const ctxPie = document.getElementById('pieChart').getContext('2d');
-        new Chart(ctxPie, {
+        new Chart(document.getElementById('pieChart'), {
             type: 'doughnut',
-            data: {
-                labels: ['Plásticos', 'Micro', 'Org', 'Otros'],
-                datasets: [{ data: [60, 15, 15, 10], backgroundColor: ['#00d4ff', '#ff9f40', '#4bc0c0', '#9966ff'] }]
-            }
+            data: { labels: ['Plásticos', 'Orgánico', 'Otros'], datasets: [{ data: [70, 20, 10], backgroundColor: ['#00d4ff', '#4bc0c0', '#9966ff'] }]}
         });
     </script>
 </body>
