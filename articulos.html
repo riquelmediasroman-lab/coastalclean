@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>CoastalClean - Artículos Educativos</title>
+    <style>
+        :root { --bg: #020817; --card: rgba(15, 23, 42, 0.8); --accent: #00d4ff; --text: #f8fafc; }
+        body { background: var(--bg); color: var(--text); font-family: 'Inter', system-ui; margin: 0; }
+        header { background: rgba(2, 8, 23, 0.8); backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 5%; }
+        .logo span { color: var(--accent); text-shadow: 0 0 20px rgba(0,212,255,0.4); }
+        .nav-links { display: flex; list-style: none; gap: 25px; }
+        .nav-links a { color: #94a3b8; text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
+        .nav-links a:hover { color: var(--accent); }
+        
+        .container { padding: 60px 5%; max-width: 1400px; margin: 0 auto; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        
+        .art-card { background: var(--card); border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); transition: 0.4s; }
+        .art-card:hover { transform: translateY(-10px); border-color: var(--accent); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+        
+        .img-box { width: 100%; height: 200px; background: #1e293b; overflow: hidden; position: relative; }
+        .img-box img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .art-card:hover img { transform: scale(1.1); }
+        
+        .badge { position: absolute; top: 15px; left: 15px; background: var(--accent); color: var(--bg); padding: 5px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 800; }
+        
+        .content { padding: 25px; }
+        .content h3 { margin: 0 0 10px; font-size: 1.3rem; }
+        .content p { color: #94a3b8; font-size: 0.9rem; line-height: 1.6; }
+        .read-more { color: var(--accent); text-decoration: none; font-size: 0.8rem; font-weight: bold; display: flex; align-items: center; gap: 5px; margin-top: 15px; }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Coastal<span>Clean</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="articulos.html" style="color:var(--accent)">Artículos</a></li>
+                <li><a href="registro.html">Voluntarios</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1 style="font-size: 2.5rem; margin-bottom: 40px;">Artículos <span style="color:var(--accent)">Educativos</span></h1>
+        <div class="grid">
+            <article class="art-card">
+                <div class="img-box"><span class="badge">ECOLOGÍA</span><img src="https://images.unsplash.com/photo-1621451537084-482c73073a0f?auto=format&fit=crop&q=80&w=500" alt="Microplásticos"></div>
+                <div class="content"><h3>Microplásticos</h3><p>Descubre cómo estas partículas invisibles están afectando la cadena alimenticia en los océanos mexicanos.</p><a href="#" class="read-more">Leer Artículo →</a></div>
+            </article>
+            <article class="art-card">
+                <div class="img-box"><span class="badge">ECONOMÍA</span><img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&q=80&w=500" alt="Circular"></div>
+                <div class="content"><h3>Economía Circular</h3><p>El modelo de negocio que busca eliminar el desperdicio desde el diseño para salvar nuestros mares.</p><a href="#" class="read-more">Leer Artículo →</a></div>
+            </article>
+            <article class="art-card">
+                <div class="img-box"><span class="badge">BIOLOGÍA</span><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&q=80&w=500" alt="Posidonia"></div>
+                <div class="content"><h3>Praderas Marinas</h3><p>La importancia de la Posidonia y los manglares de Quintana Roo como pulmones del planeta.</p><a href="#" class="read-more">Leer Artículo →</a></div>
+            </article>
+            <article class="art-card">
+                <div class="img-box"><span class="badge">TECNOLOGÍA</span><img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=500" alt="Robots"></div>
+                <div class="content"><h3>IA y Océanos</h3><p>Uso de drones y robótica submarina para identificar puntos críticos de contaminación plástica.</p><a href="#" class="read-more">Leer Artículo →</a></div>
+            </article>
+            <article class="art-card">
+                <div class="img-box"><span class="badge">LEGAL</span><img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=500" alt="Leyes"></div>
+                <div class="content"><h3>Leyes del Plástico</h3><p>Análisis de la nueva legislación mexicana sobre plásticos de un solo uso en zonas costeras.</p><a href="#" class="read-more">Leer Artículo →</a></div>
+            </article>
+            <article class="art-card">
+                <div class="img-box"><span class="badge">MÉXICO</span><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=500" alt="Cancun"></div>
+                <div class="content"><h3>Turismo Sostenible</h3><p>Cómo viajar por las costas mexicanas sin dejar huella y apoyando a las comunidades locales.</p><a href="#" class="read-more">Leer Artículo →</a></div>
+            </article>
+            <article class="art-card">
+                <div class="img-box"><span class="badge">CLIMA</span><img src="https://images.unsplash.com/photo-1439066615861-d1af74d74000?auto=format&fit=crop&q=80&w=500" alt="Carbono"></div>
+                <div class="content"><h3>Carbono Azul</h3><p>El papel fundamental de los océanos en la captura de CO2 para frenar el cambio climático global.</p><a href="#" class="read-more">Leer Artículo →</a></div>
+            </article>
+            <article class="art-card">
+                <div class="img-box"><span class="badge">FAUNA</span><img src="https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?auto=format&fit=crop&q=80&w=500" alt="Tortugas"></div>
+                <div class="content"><h3>Rescate de Corales</h3><p>Programas de restauración de arrecifes en el Caribe Mexicano: un rayo de esperanza.</p><a href="#" class="read-more">Leer Artículo →</a></div>
+            </article>
+        </div>
+    </main>
+</body>
+</html>
