@@ -2,47 +2,41 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>CoastalClean - Artículos</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Hazte Voluntario - CoastalClean</title>
+    <style>
+        :root { --bg: #050f1a; --sec: #0b1e36; --accent: #00d4ff; --text: #ffffff; }
+        body { background: var(--bg); color: var(--text); font-family: sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .form-card { background: var(--sec); padding: 40px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); width: 90%; max-width: 500px; text-align: center; }
+        .input-group { text-align: left; margin-bottom: 20px; }
+        label { display: block; color: var(--accent); font-size: 0.8rem; margin-bottom: 5px; font-weight: bold; }
+        input, select, textarea { width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: #fff; box-sizing: border-box; }
+        .phone-box { display: flex; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; }
+        .prefix { padding: 12px; font-weight: bold; color: var(--accent); border-right: 1px solid rgba(255,255,255,0.1); }
+        .phone-box input { border: none; }
+        .btn-send { background: var(--accent); color: var(--bg); width: 100%; padding: 15px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 10px; }
+    </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">Coastal<span>Clean</span></div>
-            <ul class="nav-links">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="dashboard.html">Dashboard</a></li>
-                <li><a href="articulos.html" class="active">Artículos</a></li>
-                <li><a href="registro.html">Voluntarios</a></li>
-                <li><a href="nosotros.html">Nosotros</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main class="container">
-        <h2 class="page-title">Artículos Educativos</h2>
-        <div class="grid-container">
-            <article class="article-card">
-                <div class="img-placeholder"></div> <!-- Aquí va tu imagen de Microplásticos -->
-                <div class="card-content"><h3>Microplásticos</h3><p>¿Qué son y por qué preocuparse?</p></div>
-            </article>
-            <article class="article-card">
-                <div class="img-placeholder"></div> <!-- Imagen de Economía Circular -->
-                <div class="card-content"><h3>Economía Circular</h3><p>El modelo que salva océanos.</p></div>
-            </article>
-            <article class="article-card">
-                <div class="img-placeholder"></div> <!-- Imagen de Posidonia -->
-                <div class="card-content"><h3>Posidonia</h3><p>El pulmón del Mediterráneo.</p></div>
-            </article>
-            <article class="article-card">
-                <div class="img-placeholder"></div> <!-- Imagen de Tecnología -->
-                <div class="card-content"><h3>Tecnología</h3><p>Robótica marina inteligente.</p></div>
-            </article>
-            <article class="article-card">
-                <div class="img-placeholder"></div> <!-- Imagen de Legislación -->
-                <div class="card-content"><h3>Legislación</h3><p>Leyes contra el plástico.</p></div>
-            </article>
-        </div>
-    </main>
+    <div class="form-card">
+        <h2>Hazte Voluntario</h2>
+        <p>Únete a las brigadas en México</p>
+        <form onsubmit="alert('¡Registro exitoso!'); return false;">
+            <div class="input-group"><label>Nombre Completo</label><input type="text" required></div>
+            <div class="input-group"><label>Correo</label><input type="email" required></div>
+            <div class="input-group">
+                <label>Teléfono</label>
+                <div class="phone-box"><span class="prefix">+52</span><input type="tel" placeholder="55 1234 5678" required></div>
+            </div>
+            <div class="input-group">
+                <label>Estado</label>
+                <select required>
+                    <option value="">Selecciona Estado</option>
+                    <option>Ciudad de México</option><option>Jalisco</option><option>Yucatán</option><option>Nuevo León</option>
+                </select>
+            </div>
+            <button type="submit" class="btn-send">Registrarme</button>
+        </form>
+        <p><a href="index.html" style="color:var(--accent); text-decoration:none; font-size:0.8rem;">Volver al inicio</a></p>
+    </div>
 </body>
 </html>
