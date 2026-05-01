@@ -1,50 +1,66 @@
-// --- 1. Animación del Marquee (Texto Corredizo) ---
-const marquee = document.getElementById('marquee');
-marquee.innerHTML += marquee.innerHTML; // Duplicar para efecto infinito
+// --- 1. Reparación del Movimiento (Marquee) ---
+const marquee = document.getElementById('marquee-text');
 
-let xPos = 0;
-const speed = 1.2;
+if (marquee) {
+    // Duplicamos el texto para que el ciclo no tenga cortes
+    marquee.innerHTML += " " + marquee.innerHTML;
 
-function animateMarquee() {
-    xPos -= speed;
-    if (Math.abs(xPos) >= marquee.scrollWidth / 2) {
-        xPos = 0;
+    let position = 0;
+    const scrollSpeed = 1.2;
+
+    function moveMarquee() {
+        position -= scrollSpeed;
+        
+        // Si ha recorrido la mitad (el texto original), reiniciamos
+        if (Math.abs(position) >= marquee.scrollWidth / 2) {
+            position = 0;
+        }
+        
+        marquee.style.transform = `translateX(${position}px)`;
+        requestAnimationFrame(moveMarquee);
     }
-    marquee.style.transform = `translateX(${xPos}px)`;
-    requestAnimationFrame(animateMarquee);
+    
+    moveMarquee();
 }
-animateMarquee();
 
-// --- 2. Lógica del Modal de Registro ---
+// --- 2. Reparación del Botón de Registro ---
 const modal = document.getElementById("modalRegistro");
-const btnUnete = document.querySelector(".btn-cta");
-const btnCerrar = document.querySelector(".close-btn");
+const btnUnete = document.getElementById("btnUnete");
+const btnCerrar = document.getElementById("closeModal");
 const form = document.getElementById("formRegistro");
 
-btnUnete.onclick = function(e) {
-    e.preventDefault();
-    modal.style.display = "block";
+// Mostrar modal al hacer clic
+if (btnUnete) {
+    btnUnete.onclick = function() {
+        modal.style.display = "block";
+    }
 }
 
-btnCerrar.onclick = function() {
-    modal.style.display = "none";
+// Cerrar modal al hacer clic en la X
+if (btnCerrar) {
+    btnCerrar.onclick = function() {
+        modal.style.display = "none";
+    }
 }
 
+// Cerrar si hacen clic fuera del cuadro blanco
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
 }
 
-// Manejo del envío
-form.onsubmit = function(e) {
-    e.preventDefault();
-    const nombre = document.getElementById("nombre").value;
-    const tel = document.getElementById("telefono").value;
-    const estado = document.getElementById("estado").value;
-    
-    alert(`¡Gracias ${nombre}! Registro exitoso desde ${estado}. Te contactaremos al +52 ${tel}.`);
-    
-    modal.style.display = "none";
-    form.reset();
+// Lógica del Formulario
+if (form) {
+    form.onsubmit = function(e) {
+        e.preventDefault();
+        const nombre = document.getElementById("nombre").value;
+        const tel = document.getElementById("telefono").value;
+        const estado = document.getElementById("estado").value;
+        
+        alert(`¡Registro Exitoso!\nNombre: ${nombre}\nUbicación: ${estado}\nContacto: +52 ${tel}`);
+        
+        modal.style.display = "none";
+        form.reset();
+    }
 }
