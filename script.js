@@ -1,9 +1,9 @@
+// --- 1. Animación del Marquee (Texto Corredizo) ---
 const marquee = document.getElementById('marquee');
-// Duplicamos el texto para un efecto infinito sin saltos
-marquee.innerHTML += marquee.innerHTML;
+marquee.innerHTML += marquee.innerHTML; // Duplicar para efecto infinito
 
 let xPos = 0;
-const speed = 1.5;
+const speed = 1.2;
 
 function animateMarquee() {
     xPos -= speed;
@@ -13,50 +13,38 @@ function animateMarquee() {
     marquee.style.transform = `translateX(${xPos}px)`;
     requestAnimationFrame(animateMarquee);
 }
-
 animateMarquee();
 
-// --- Lógica del Formulario de Registro ---
+// --- 2. Lógica del Modal de Registro ---
 const modal = document.getElementById("modalRegistro");
 const btnUnete = document.querySelector(".btn-cta");
 const btnCerrar = document.querySelector(".close-btn");
 const form = document.getElementById("formRegistro");
 
-// Función para abrir el modal
-if (btnUnete) {
-    btnUnete.onclick = function(e) {
-        e.preventDefault();
-        modal.style.display = "block";
-    }
+btnUnete.onclick = function(e) {
+    e.preventDefault();
+    modal.style.display = "block";
 }
 
-// Función para cerrar el modal
-if (btnCerrar) {
-    btnCerrar.onclick = function() {
-        modal.style.display = "none";
-    }
+btnCerrar.onclick = function() {
+    modal.style.display = "none";
 }
 
-// Cerrar si el usuario hace clic fuera del cuadro
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
 }
 
-// Manejo del envío (Simulación)
-if (form) {
-    form.onsubmit = function(e) {
-        e.preventDefault();
-        
-        const nombre = document.getElementById("nombre").value;
-        const tel = document.getElementById("telefono").value;
-        const estado = document.getElementById("estado").value;
-        
-        // Mensaje de confirmación profesional
-        alert(`¡Gracias ${nombre}! Hemos registrado tu interés desde ${estado}. Nos contactaremos al +52 ${tel} pronto.`);
-        
-        modal.style.display = "none";
-        form.reset();
-    }
+// Manejo del envío
+form.onsubmit = function(e) {
+    e.preventDefault();
+    const nombre = document.getElementById("nombre").value;
+    const tel = document.getElementById("telefono").value;
+    const estado = document.getElementById("estado").value;
+    
+    alert(`¡Gracias ${nombre}! Registro exitoso desde ${estado}. Te contactaremos al +52 ${tel}.`);
+    
+    modal.style.display = "none";
+    form.reset();
 }
