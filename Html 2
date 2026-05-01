@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>CoastalClean - Panel de Progreso</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Coastal<span>Clean</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="dashboard.html" class="active">Dashboard</a></li>
+                <li><a href="articulos.html">Artículos</a></li>
+                <li><a href="registro.html">Voluntarios</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h2 class="page-title">Panel de Progreso</h2>
+        
+        <div class="stats-grid-small">
+            <div class="stat-mini"><span>Total Recolectado</span><strong>0 kg</strong></div>
+            <div class="stat-mini"><span>Voluntarios</span><strong>4</strong></div>
+            <div class="stat-mini"><span>Limpiezas</span><strong>0</strong></div>
+            <div class="stat-mini"><span>Área Limpiada</span><strong>0 m²</strong></div>
+        </div>
+
+        <div class="charts-container">
+            <div class="chart-box"><canvas id="barChart"></canvas></div>
+            <div class="chart-box"><canvas id="pieChart"></canvas></div>
+        </div>
+    </main>
+
+    <script>
+        // Configuración de Gráficas
+        const ctxBar = document.getElementById('barChart').getContext('2d');
+        new Chart(ctxBar, {
+            type: 'bar',
+            data: {
+                labels: ['Playa', 'Costa', 'Bahía', 'Costas'],
+                datasets: [{ label: 'Residuos', data: [250, 400, 340, 200], backgroundColor: '#00d4ff' }]
+            },
+            options: { plugins: { legend: { labels: { color: '#fff' } } } }
+        });
+
+        const ctxPie = document.getElementById('pieChart').getContext('2d');
+        new Chart(ctxPie, {
+            type: 'doughnut',
+            data: {
+                labels: ['Plásticos', 'Micro', 'Org', 'Otros'],
+                datasets: [{ data: [60, 15, 15, 10], backgroundColor: ['#00d4ff', '#ff9f40', '#4bc0c0', '#9966ff'] }]
+            }
+        });
+    </script>
+</body>
+</html>
