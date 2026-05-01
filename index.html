@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CoastalClean - Sullana & Océanos</title>
-    <!-- Fuente moderna -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -20,12 +19,14 @@
                 <li><a href="#">Voluntarios</a></li>
                 <li><a href="#">Nosotros</a></li>
             </ul>
-            <a href="#registro" class="btn-cta">Únete Ahora</a>
+            <!-- ID "btnUnete" para que el JavaScript lo encuentre fácilmente -->
+            <a href="javascript:void(0)" id="btnUnete" class="btn-cta">Únete Ahora</a>
         </nav>
     </header>
 
     <div class="marquee-container">
-        <div class="marquee-text" id="marquee">
+        <!-- El ID debe ser "marquee-text" para que coincida con el script -->
+        <div class="marquee-text" id="marquee-text">
             • SALVEMOS EL OCÉANO JUNTOS • ¡BIENVENIDO A COASTALCLEAN! • PRÓXIMA LIMPIEZA: MAYO 2026 • ÚNETE A NUESTROS VOLUNTARIOS EN MÉXICO • 
         </div>
     </div>
@@ -51,27 +52,14 @@
             </div>
         </section>
 
-        <section id="problema" class="problem-section">
+        <section class="problem-section">
             <span class="section-tag">EL PROBLEMA</span>
             <h2>¿Por qué es urgente actuar?</h2>
-            
             <div class="grid-container">
-                <article class="card">
-                    <h3>Microplásticos</h3>
-                    <p>Fragmentos de menos de 5mm contaminan el 83% del agua.</p>
-                </article>
-                <article class="card">
-                    <h3>Vida Marina</h3>
-                    <p>Más de 100,000 animales marinos mueren cada año.</p>
-                </article>
-                <article class="card">
-                    <h3>Economía Circular</h3>
-                    <p>Solo el 9% del plástico producido se recicla.</p>
-                </article>
-                <article class="card">
-                    <h3>Producción Global</h3>
-                    <p>Se producen 400 millones de toneladas al año.</p>
-                </article>
+                <article class="card"><h3>Microplásticos</h3><p>Fragmentos de menos de 5mm contaminan el 83% del agua.</p></article>
+                <article class="card"><h3>Vida Marina</h3><p>Más de 100,000 animales marinos mueren cada año.</p></article>
+                <article class="card"><h3>Economía Circular</h3><p>Solo el 9% del plástico producido se recicla.</p></article>
+                <article class="card"><h3>Producción Global</h3><p>Se producen 400 millones de toneladas al año.</p></article>
             </div>
         </section>
     </main>
@@ -79,75 +67,44 @@
     <!-- Modal de Registro -->
     <div id="modalRegistro" class="modal">
         <div class="modal-content">
-            <span class="close-btn">&times;</span>
+            <span class="close-btn" id="closeModal">&times;</span>
             <h2>Registro de Voluntarios</h2>
             <p>Únete a nuestra brigada en México</p>
-            
             <form id="formRegistro">
                 <div class="input-group">
                     <label>Nombre Completo</label>
                     <input type="text" id="nombre" placeholder="Ej. Juan Pérez" required>
                 </div>
-
                 <div class="input-group">
                     <label>Correo Electrónico</label>
                     <input type="email" id="email" placeholder="correo@ejemplo.com" required>
                 </div>
-
                 <div class="input-group">
                     <label>Teléfono (México)</label>
                     <div class="phone-input">
                         <span class="prefix">+52</span>
-                        <input type="tel" id="telefono" placeholder="55 1234 5678" pattern="[0-9]{10}" title="Ingresa los 10 dígitos de tu número" required>
+                        <input type="tel" id="telefono" placeholder="55 1234 5678" pattern="[0-9]{10}" required>
                     </div>
                 </div>
-
                 <div class="input-group">
                     <label>Estado de México</label>
                     <select id="estado" required>
                         <option value="" disabled selected>Selecciona tu estado</option>
                         <option value="Aguascalientes">Aguascalientes</option>
-                        <option value="Baja California">Baja California</option>
-                        <option value="Baja California Sur">Baja California Sur</option>
-                        <option value="Campeche">Campeche</option>
-                        <option value="Chiapas">Chiapas</option>
-                        <option value="Chihuahua">Chihuahua</option>
                         <option value="Ciudad de México">Ciudad de México</option>
-                        <option value="Coahuila">Coahuila</option>
-                        <option value="Colima">Colima</option>
-                        <option value="Durango">Durango</option>
-                        <option value="Estado de México">Estado de México</option>
-                        <option value="Guanajuato">Guanajuato</option>
-                        <option value="Guerrero">Guerrero</option>
-                        <option value="Hidalgo">Hidalgo</option>
                         <option value="Jalisco">Jalisco</option>
-                        <option value="Michoacán">Michoacán</option>
-                        <option value="Morelos">Morelos</option>
-                        <option value="Nayarit">Nayarit</option>
                         <option value="Nuevo León">Nuevo León</option>
-                        <option value="Oaxaca">Oaxaca</option>
-                        <option value="Puebla">Puebla</option>
-                        <option value="Querétaro">Querétaro</option>
-                        <option value="Quintana Roo">Quintana Roo</option>
-                        <option value="San Luis Potosí">San Luis Potosí</option>
-                        <option value="Sinaloa">Sinaloa</option>
-                        <option value="Sonora">Sonora</option>
-                        <option value="Tabasco">Tabasco</option>
-                        <option value="Tamaulipas">Tamaulipas</option>
-                        <option value="Tlaxcala">Tlaxcala</option>
-                        <option value="Veracruz">Veracruz</option>
                         <option value="Yucatán">Yucatán</option>
-                        <option value="Zacatecas">Zacatecas</option>
+                        <!-- Se pueden añadir más estados aquí -->
                     </select>
                 </div>
-
                 <button type="submit" class="btn-submit">Enviar Registro</button>
             </form>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2026 CoastalClean. Proyecto académico UVM por jjDA.</p>
+        <p>&copy; 2026 CoastalClean. Proyecto académico por Pedro Ricardo Peña Talledo.</p>
     </footer>
 
     <script src="script.js"></script>
