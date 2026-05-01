@@ -2,85 +2,207 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>CoastalClean - Artículos Educativos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoastalClean - Biblioteca de Artículos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        :root { --bg: #020817; --card: rgba(15, 23, 42, 0.8); --accent: #00d4ff; --text: #f8fafc; }
-        body { background: var(--bg); color: var(--text); font-family: 'Inter', system-ui; margin: 0; }
-        header { background: rgba(2, 8, 23, 0.8); backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255,255,255,0.1); }
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 5%; }
-        .logo span { color: var(--accent); text-shadow: 0 0 20px rgba(0,212,255,0.4); }
+        :root {
+            --bg: #020617;
+            --card-bg: rgba(15, 23, 42, 0.7);
+            --accent: #00d4ff;
+            --text: #f8fafc;
+            --text-dim: #94a3b8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--bg); color: var(--text); font-family: 'Plus Jakarta Sans', sans-serif; line-height: 1.6; }
+
+        /* --- NAVEGACIÓN --- */
+        header { background: rgba(2, 6, 23, 0.9); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 5%; max-width: 1400px; margin: 0 auto; }
+        .logo { font-size: 1.5rem; font-weight: 800; }
+        .logo span { color: var(--accent); }
         .nav-links { display: flex; list-style: none; gap: 25px; }
-        .nav-links a { color: #94a3b8; text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
+        .nav-links a { color: var(--text-dim); text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
         .nav-links a:hover { color: var(--accent); }
+
+        .container { padding: 60px 5%; max-width: 1300px; margin: 0 auto; }
+        h1 { font-size: 2.5rem; margin-bottom: 40px; text-align: center; font-weight: 800; }
+        h1 span { color: var(--accent); }
+
+        /* --- GRID DE ARTÍCULOS --- */
+        .art-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         
-        .container { padding: 60px 5%; max-width: 1400px; margin: 0 auto; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        
-        .art-card { background: var(--card); border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); transition: 0.4s; }
+        .art-card { 
+            background: var(--card-bg); border-radius: 20px; overflow: hidden; 
+            border: 1px solid rgba(255,255,255,0.05); transition: 0.4s; cursor: pointer;
+            display: flex; flex-direction: column;
+        }
         .art-card:hover { transform: translateY(-10px); border-color: var(--accent); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
         
-        .img-box { width: 100%; height: 200px; background: #1e293b; overflow: hidden; position: relative; }
-        .img-box img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-        .art-card:hover img { transform: scale(1.1); }
+        .img-box { height: 200px; background: #1e293b; position: relative; }
+        .img-box img { width: 100%; height: 100%; object-fit: cover; }
+        .badge { position: absolute; top: 15px; left: 15px; background: var(--accent); color: var(--bg); padding: 4px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 800; }
+
+        .art-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
+        .art-content h3 { margin-bottom: 10px; font-size: 1.25rem; }
+        .art-content p { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 20px; }
         
-        .badge { position: absolute; top: 15px; left: 15px; background: var(--accent); color: var(--bg); padding: 5px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 800; }
-        
-        .content { padding: 25px; }
-        .content h3 { margin: 0 0 10px; font-size: 1.3rem; }
-        .content p { color: #94a3b8; font-size: 0.9rem; line-height: 1.6; }
-        .read-more { color: var(--accent); text-decoration: none; font-size: 0.8rem; font-weight: bold; display: flex; align-items: center; gap: 5px; margin-top: 15px; }
+        .btn-read { 
+            color: var(--accent); text-decoration: none; font-weight: 700; font-size: 0.85rem; 
+            margin-top: auto; display: flex; align-items: center; gap: 5px;
+        }
+
+        /* --- MODAL (CONTENIDO DEL ARTÍCULO) --- */
+        .modal { 
+            display: none; position: fixed; z-index: 2000; left: 0; top: 0; 
+            width: 100%; height: 100%; background: rgba(2, 6, 23, 0.95); 
+            backdrop-filter: blur(10px); overflow-y: auto;
+        }
+        .modal-body { 
+            background: #0f172a; margin: 50px auto; padding: 50px; 
+            width: 90%; max-width: 800px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.1);
+            position: relative;
+        }
+        .close-modal { position: absolute; top: 25px; right: 25px; font-size: 30px; cursor: pointer; color: var(--text-dim); }
+        .modal-text { margin-top: 20px; }
+        .modal-text h2 { color: var(--accent); font-size: 2rem; margin-bottom: 20px; }
+        .modal-text p { margin-bottom: 15px; line-height: 1.8; color: #cbd5e1; }
+
+        footer { text-align: center; padding: 40px; color: var(--text-dim); font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.05); }
     </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">Coastal<span>Clean</span></div>
-            <ul class="nav-links">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="dashboard.html">Dashboard</a></li>
-                <li><a href="articulos.html" style="color:var(--accent)">Artículos</a></li>
-                <li><a href="registro.html">Voluntarios</a></li>
-                <li><a href="nosotros.html">Nosotros</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <main class="container">
-        <h1 style="font-size: 2.5rem; margin-bottom: 40px;">Artículos <span style="color:var(--accent)">Educativos</span></h1>
-        <div class="grid">
-            <article class="art-card">
-                <div class="img-box"><span class="badge">ECOLOGÍA</span><img src="https://images.unsplash.com/photo-1621451537084-482c73073a0f?auto=format&fit=crop&q=80&w=500" alt="Microplásticos"></div>
-                <div class="content"><h3>Microplásticos</h3><p>Descubre cómo estas partículas invisibles están afectando la cadena alimenticia en los océanos mexicanos.</p><a href="#" class="read-more">Leer Artículo →</a></div>
-            </article>
-            <article class="art-card">
-                <div class="img-box"><span class="badge">ECONOMÍA</span><img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&q=80&w=500" alt="Circular"></div>
-                <div class="content"><h3>Economía Circular</h3><p>El modelo de negocio que busca eliminar el desperdicio desde el diseño para salvar nuestros mares.</p><a href="#" class="read-more">Leer Artículo →</a></div>
-            </article>
-            <article class="art-card">
-                <div class="img-box"><span class="badge">BIOLOGÍA</span><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&q=80&w=500" alt="Posidonia"></div>
-                <div class="content"><h3>Praderas Marinas</h3><p>La importancia de la Posidonia y los manglares de Quintana Roo como pulmones del planeta.</p><a href="#" class="read-more">Leer Artículo →</a></div>
-            </article>
-            <article class="art-card">
-                <div class="img-box"><span class="badge">TECNOLOGÍA</span><img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=500" alt="Robots"></div>
-                <div class="content"><h3>IA y Océanos</h3><p>Uso de drones y robótica submarina para identificar puntos críticos de contaminación plástica.</p><a href="#" class="read-more">Leer Artículo →</a></div>
-            </article>
-            <article class="art-card">
-                <div class="img-box"><span class="badge">LEGAL</span><img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=500" alt="Leyes"></div>
-                <div class="content"><h3>Leyes del Plástico</h3><p>Análisis de la nueva legislación mexicana sobre plásticos de un solo uso en zonas costeras.</p><a href="#" class="read-more">Leer Artículo →</a></div>
-            </article>
-            <article class="art-card">
-                <div class="img-box"><span class="badge">MÉXICO</span><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=500" alt="Cancun"></div>
-                <div class="content"><h3>Turismo Sostenible</h3><p>Cómo viajar por las costas mexicanas sin dejar huella y apoyando a las comunidades locales.</p><a href="#" class="read-more">Leer Artículo →</a></div>
-            </article>
-            <article class="art-card">
-                <div class="img-box"><span class="badge">CLIMA</span><img src="https://images.unsplash.com/photo-1439066615861-d1af74d74000?auto=format&fit=crop&q=80&w=500" alt="Carbono"></div>
-                <div class="content"><h3>Carbono Azul</h3><p>El papel fundamental de los océanos en la captura de CO2 para frenar el cambio climático global.</p><a href="#" class="read-more">Leer Artículo →</a></div>
-            </article>
-            <article class="art-card">
-                <div class="img-box"><span class="badge">FAUNA</span><img src="https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?auto=format&fit=crop&q=80&w=500" alt="Tortugas"></div>
-                <div class="content"><h3>Rescate de Corales</h3><p>Programas de restauración de arrecifes en el Caribe Mexicano: un rayo de esperanza.</p><a href="#" class="read-more">Leer Artículo →</a></div>
-            </article>
-        </div>
-    </main>
+<header>
+    <nav>
+        <div class="logo">Coastal<span>Clean</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="articulos.html" style="color:var(--accent)">Artículos</a></li>
+            <li><a href="registro.html">Voluntarios</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="container">
+    <h1>Artículos <span>Educativos</span></h1>
+    <div class="art-grid" id="grid-articulos">
+        <!-- Los artículos se generan con JavaScript -->
+    </div>
+</main>
+
+<div id="artModal" class="modal">
+    <div class="modal-body">
+        <span class="close-modal">&times;</span>
+        <div id="modalContent" class="modal-text"></div>
+    </div>
+</div>
+
+<footer><p>&copy; 2026 CoastalClean | Proyecto de Innovación UVM México</p></footer>
+
+<script>
+    // BASE DE DATOS DE ARTÍCULOS
+    const articulos = [
+        {
+            id: 1,
+            tag: "ECOLOGÍA",
+            titulo: "Microplásticos en el Mar",
+            extracto: "Descubre cómo estas partículas invisibles están afectando la cadena alimenticia en México.",
+            imagen: "https://images.unsplash.com/photo-1621451537084-482c73073a0f?auto=format&fit=crop&q=80&w=600",
+            contenido: `
+                <h2>Microplásticos: La Amenaza Invisible</h2>
+                <p>Los microplásticos son fragmentos de plástico menores a 5 milímetros que resultan de la degradación de objetos más grandes o de la fabricación de productos cosméticos y textiles. En las costas de México, su presencia ha aumentado un 40% en la última década.</p>
+                <p>Estas partículas son ingeridas por el plancton y peces pequeños, permitiendo que las toxinas viajen a través de la cadena alimenticia hasta llegar al consumo humano. CoastalClean trabaja en brigadas especializadas para filtrar arena y detectar estos contaminantes en playas de alta prioridad.</p>
+                <p>Reducir el uso de fibras sintéticas y evitar exfoliantes con microesferas son pasos vitales que cada estudiante puede tomar hoy mismo.</p>
+            `
+        },
+        {
+            id: 2,
+            tag: "ECONOMÍA",
+            titulo: "Economía Circular",
+            extracto: "El modelo de negocio que busca eliminar el desperdicio desde el diseño para salvar nuestros mares.",
+            imagen: "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&q=80&w=600",
+            contenido: `
+                <h2>Hacia una Economía Circular</h2>
+                <p>La economía circular propone un sistema donde los materiales nunca se conviertan en desperdicio. En lugar de extraer, fabricar y tirar, buscamos reutilizar, reparar y reciclar en ciclos cerrados.</p>
+                <p>Para el cuidado de los océanos, esto significa rediseñar empaques para que sean 100% compostables o infinitamente reciclables. En México, diversas startups están transformando redes de pesca abandonadas en armazones de lentes y muebles, demostrando que la sostenibilidad es un negocio rentable.</p>
+            `
+        },
+        {
+            id: 3,
+            tag: "BIOLOGÍA",
+            titulo: "Praderas Marinas",
+            extracto: "La importancia de la Posidonia y los manglares de Quintana Roo como pulmones del planeta.",
+            imagen: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&q=80&w=600",
+            contenido: `
+                <h2>Manglares y Praderas: Escudos Naturales</h2>
+                <p>Las praderas marinas y los manglares capturan hasta 50 veces más carbono que las selvas tropicales. En México, estas zonas son fundamentales para prevenir la erosión costera durante la temporada de huracanes.</p>
+                <p>Lamentablemente, el desarrollo turístico desmedido ha puesto en riesgo estos ecosistemas. CoastalClean apoya programas de reforestación de manglar para asegurar que estos "sumideros de carbono" sigan protegiendo nuestra biodiversidad.</p>
+            `
+        },
+        {
+            id: 4,
+            tag: "TECNOLOGÍA",
+            titulo: "IA y Océanos",
+            extracto: "Uso de drones y robótica submarina para identificar puntos críticos de contaminación plástica.",
+            imagen: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=600",
+            contenido: `
+                <h2>Tecnología al Servicio del Mar</h2>
+                <p>La Inteligencia Artificial nos permite analizar imágenes satelitales para predecir hacia dónde se moverán las "islas de plástico". Mediante drones equipados con cámaras térmicas, CoastalClean localiza redes de pesca fantasma atrapadas en arrecifes.</p>
+                <p>El futuro de la conservación es tecnológico. Integrar sensores de calidad de agua económicos nos permite obtener datos en tiempo real sobre la salud de nuestras costas.</p>
+            `
+        }
+    ];
+
+    const grid = document.getElementById('grid-articulos');
+    const modal = document.getElementById('artModal');
+    const modalContent = document.getElementById('modalContent');
+    const closeBtn = document.querySelector('.close-modal');
+
+    // Cargar artículos en el grid
+    articulos.forEach(art => {
+        const card = document.createElement('div');
+        card.className = 'art-card';
+        card.innerHTML = `
+            <div class="img-box">
+                <span class="badge">${art.tag}</span>
+                <img src="${art.imagen}" alt="${art.titulo}">
+            </div>
+            <div class="art-content">
+                <h3>${art.titulo}</h3>
+                <p>${extractoCorto(art.extracto)}</p>
+                <span class="btn-read" onclick="abrirArticulo(${art.id})">Leer Artículo →</span>
+            </div>
+        `;
+        grid.appendChild(card);
+    });
+
+    function extractoCorto(texto) {
+        return texto.length > 85 ? texto.substring(0, 85) + "..." : texto;
+    }
+
+    function abrirArticulo(id) {
+        const art = articulos.find(a => a.id === id);
+        modalContent.innerHTML = art.contenido;
+        modal.style.display = "block";
+        document.body.style.overflow = "hidden"; // Evita scroll de fondo
+    }
+
+    closeBtn.onclick = () => {
+        modal.style.display = "none";
+        document.body.style.overflow = "auto";
+    };
+
+    window.onclick = (e) => {
+        if (e.target == modal) {
+            modal.style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+    };
+</script>
+
 </body>
 </html>
